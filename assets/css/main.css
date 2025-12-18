@@ -1545,16 +1545,41 @@ a:active { transform: scale(0.95); } /* Active state */
 .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin-top: 20px;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
 }
-.data-table thead {
+
+/* Distinct Header Row */
+.data-table thead tr {
   background-color: #0563af;
-  color: white;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
 }
-.data-table th, .data-table td {
-  padding: 12px 15px;
-  border: 1px solid #ddd;
+
+.data-table th, 
+.data-table td {
+  padding: 15px 20px;
+  border: 1px solid #eeeeee;
 }
-.data-table tbody tr:nth-child(even) { background-color: #f2f2f2; } /* Zebra striping */
-.data-table tbody tr:hover { background-color: #e9ecef; } /* Row hover */
-.text-right { text-align: right; } /* Right-aligned numbers */
+
+/* Zebra Striping */
+.data-table tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+/* Row Hover Effect */
+.data-table tbody tr:hover {
+  background-color: #f1f7fc;
+  transition: 0.3s;
+}
+
+/* Alignment Requirements */
+.data-table td {
+  text-align: left; /* Text left-aligned */
+}
+
+.text-right {
+  text-align: right !important; /* Numbers right-aligned */
+}
