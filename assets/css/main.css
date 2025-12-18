@@ -1510,14 +1510,35 @@ a:active { transform: scale(0.95); } /* Active state */
   list-style: none;
   padding-left: 0;
 }
-.resume-list li {
+
+.resume-list > li {
   counter-increment: resume-counter;
-  margin-bottom: 15px;
+  position: relative;
+  padding-left: 40px; /* Space for the counter number */
+  margin-bottom: 20px;
 }
-.resume-list li::before {
-  content: counter(resume-counter) ". "; /* Counter system */
+
+/* Creating the custom number using pseudo-elements */
+.resume-list > li::before {
+  content: counter(resume-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: #0563af;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
   font-weight: bold;
-  color: #ce1212;
+}
+
+/* Styling the nested list inside the high school item */
+.resume-list ul {
+  list-style: square;
+  padding-top: 10px;
+  color: #666;
 }
 
 /* Tables/Data Blocks (2.0 pts) */
