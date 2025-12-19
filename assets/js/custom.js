@@ -60,10 +60,10 @@ const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function validateField(input, condition) {
     if (condition) {
-        input.style.border = "2px solid green"; // Visible feedback [cite: 47]
+        input.style.border = "2px solid green"; // Visible feedback
         return true;
     } else {
-        input.style.border = "2px solid red"; // Visible feedback [cite: 47]
+        input.style.border = "2px solid red"; // Visible feedback
         return false;
     }
 }
@@ -73,15 +73,17 @@ function checkFormValidity() {
     const isSurnameValid = validateField(document.getElementById('surname'), regexLetters.test(document.getElementById('surname').value));
     const isEmailValid = validateField(document.getElementById('email'), regexEmail.test(document.getElementById('email').value));
     const isAddressValid = validateField(document.getElementById('address'), document.getElementById('address').value.trim().length > 5);
-    const isPhoneValid = document.getElementById('phone').value.length >= 15; // +370 6xx xxxxx length
+    
+    const phoneInput = document.getElementById('phone');
+    const isPhoneValid = validateField(phoneInput, phoneInput.value.length >= 15);
 
-    // Disable Submit button until form data is valid [cite: 51, 52]
+    // The Submit button must remain disabled until ALL fields are valid
     submitBtn.disabled = !(isNameValid && isSurnameValid && isEmailValid && isAddressValid && isPhoneValid);
 }
 
-// Phone masking for Lithuanian format: +370 6xx xxxxx [cite: 50]
+// Phone masking for Lithuanian format: +370 6xx xxxxx
 document.getElementById('phone').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, ''); // Allow only digits [cite: 49]
+    let value = e.target.value.replace(/\D/g, ''); // Allow only digits
     if (!value.startsWith('370')) value = '370' + value;
     
     let formatted = '+370';
@@ -93,7 +95,8 @@ document.getElementById('phone').addEventListener('input', function(e) {
     checkFormValidity();
 });
 
-// Add listeners for real-time feedback [cite: 40, 47]
+// Add listeners for real-time feedback
 ['name', 'surname', 'email', 'address'].forEach(id => {
     document.getElementById(id).addEventListener('input', checkFormValidity);
 });
+
