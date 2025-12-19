@@ -69,35 +69,42 @@ function validateField(input, condition) {
 }
 
 function checkFormValidity() {
-    const isNameValid = validateField(document.getElementById('name'), regexLetters.test(document.getElementById('name').value));
-    const isSurnameValid = validateField(document.getElementById('surname'), regexLetters.test(document.getElementById('surname').value));
-    const isEmailValid = validateField(document.getElementById('email'), regexEmail.test(document.getElementById('email').value));
+    // Existing validations for Name, Surname, Email, Address...
+    const isNameValid = validateField(document.getElementById('name'), /^[A-Za-z]+$/.test(document.getElementById('name').value));
+    const isSurnameValid = validateField(document.getElementById('surname'), /^[A-Za-z]+$/.test(document.getElementById('surname').value));
+    const isEmailValid = validateField(document.getElementById('email'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value));
     const isAddressValid = validateField(document.getElementById('address'), document.getElementById('address').value.trim().length > 5);
-    
-    const phoneInput = document.getElementById('phone');
-    const isPhoneValid = validateField(phoneInput, phoneInput.value.length = 14);
 
-    // The Submit button must remain disabled until ALL fields are valid
+    // STRICT PHONE VALIDATION
+    const phoneInput = document.getElementById('phone');
+    // The format "+370 6xx xxxxx" is exactly 14 characters long
+    const isPhoneValid = validateField(phoneInput, phoneInput.value.length === 14 && phoneInput.value.startsWith('+370 6'));
+
+    const submitBtn = document.getElementById('submit-btn');
     submitBtn.disabled = !(isNameValid && isSurnameValid && isEmailValid && isAddressValid && isPhoneValid);
 }
 
-// Phone masking for Lithuanian format: +370 6xx xxxxx
+// Fixed Phone Masking Listener
 document.getElementById('phone').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, ''); // Allow only digits
+    let value = e.target.value.replace(/\D/g, ''); // Extract digits only
+    
+    // Ensure it starts with 370
     if (!value.startsWith('370')) value = '370' + value;
-    
-    let formatted = '+370';
-    if (value.length > 3) formatted += ' ' + value.substring(3, 4);
-    if (value.length > 4) formatted += value.substring(4, 6);
-    if (value.length > 6) formatted += ' ' + value.substring(6, 11);
-    
-    e.target.value = formatted.substring(0, 15);
-    checkFormValidity();
-});
 
-// Add listeners for real-time feedback
-['name', 'surname', 'email', 'address'].forEach(id => {
-    document.getElementById(id).addEventListener('input', checkFormValidity);
+    let formatted = '+370';
+    if (value.length > 3) {
+        // Automatically add the space and the "6" for Lithuanian mobile 
+        formatted += ' ' + value.substring(3, 4); 
+    }
+    if (value.length > 4) {
+        formatted += value.substring(4, 6);
+    }
+    if (value.length > 6) {
+        formatted += ' ' + value.substring(6, 11);
+    }
+    
+    e.target.value = formatted.substring(0, 14); // Limit to correct length
+    checkFormValidity();
 });
 
 
