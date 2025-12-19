@@ -210,41 +210,47 @@ a:active { transform: scale(0.95); } /* Active state */
 }
 
 /* --- Optional Task: Decorative Floating CSS Shapes --- */
+/* Ensure the background image stays at the bottom */
+#hero img {
+  position: absolute;
+  z-index: 1;
+}
+
 .shape {
   position: absolute;
-  background: rgba(255, 255, 255, 0.3); /* Made slightly more visible */
-  border-radius: 50%;
-  z-index: 2; /* Increased z-index to sit above the image */
-  pointer-events: none;
+  background: rgba(255, 255, 255, 0.4); /* Increased opacity for better visibility */
+  border-radius: 50%; /* Default circle shape */
+  z-index: 2; /* Sits above the image but below the text */
+  pointer-events: none; /* Allows user to click "through" the shape to links */
 }
 
 .shape-1 {
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 180px;
   top: 15%;
   left: 10%;
   animation: float 6s ease-in-out infinite;
 }
 
 .shape-2 {
-  width: 100px;
-  height: 100px;
-  bottom: 15%;
+  width: 120px;
+  height: 120px;
+  bottom: 20%;
   right: 15%;
-  background: rgba(5, 99, 175, 0.2); /* Added a hint of blue to see it better */
+  background: rgba(5, 99, 175, 0.3); /* Light blue tint to contrast with the image */
   animation: float 8s ease-in-out infinite;
   transform: rotate(45deg);
+  border-radius: 10%; /* Makes this one a rounded square/diamond */
 }
 
-/* Ensure the hero content (your name/socials) is above the shapes */
+/* Main content must be on the highest layer */
 #hero .container {
   position: relative;
   z-index: 3;
 }
 
-
+/* --- Floating Animation Keyframes --- */
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
+  50% { transform: translateY(-30px) rotate(15deg); }
 }
-
