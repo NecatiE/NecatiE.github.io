@@ -254,3 +254,15 @@ a:active { transform: scale(0.95); } /* Active state */
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-30px) rotate(15deg); }
 }
+
+/* Styling for disabled state  */
+button:disabled {
+    background-color: #cccccc !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Error feedback border [cite: 47] */
+.form-control {
+    transition: border 0.3s ease;
+}
