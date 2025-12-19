@@ -1,5 +1,5 @@
 document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent reload
+    e.preventDefault(); // Prevent page reload
 
     const formData = {
         name: document.getElementById('name').value,
@@ -12,47 +12,39 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
         r3: parseInt(document.getElementById('rate3').value)
     };
 
-    console.log(formData); // Print object
+    console.log(formData); // Print object to console
 
-    // Calculate Average
+    // Calculate Average [cite: 27]
     const average = ((formData.r1 + formData.r2 + formData.r3) / 3).toFixed(1);
-    
-    // Determine Color
-    // Color-coding logic (Checked from highest to lowest)
-        let color = "";
 
-        if (average >= 7) { 
-    // This catches everything from 7.0 up to 10.0
-            color = "green";
-        }else if (average >= 4) { 
-    // This only catches values between 4.0 and 6.9 
-    // because anything 7+ was already caught above
-            color = "orange";
-        }else { 
-    // This catches everything from 0.0 up to 3.9
-        color = "red";
-        }
+    // Color-coding logic based on requirements
+    let color = "";
+    if (average >= 7) color = "green";
+    else if (average >= 4) color = "orange";
+    else color = "red";
 
-    // Display Results
     const resultsDiv = document.getElementById('form-results');
-    resultsDiv.style.display = 'block';
-    resultsDiv.style.zIndex = "999"; // Ensure it stays on top of layers
-    resultsDiv.style.position = "relative"; // Fixes potential "under-layer" issues
-
+    resultsDiv.style.display = 'block'; // Make results area visible
+    
+    // Display all required data
     resultsDiv.innerHTML = `
-        <div style="padding: 20px; background: #fff; border: 1px solid #ddddddff; border-radius: 8px;">
+        <div style="padding: 20px; border: 1px solid #ddd; margin-top: 20px; background: #fff;">
             <p><strong>Name:</strong> ${formData.name}</p>
             <p><strong>Surname:</strong> ${formData.surname}</p>
             <p><strong>Email:</strong> ${formData.email}</p>
-            <p><strong>Phone:</strong> ${formData.phone}</p>
+            <p><strong>Phone number:</strong> ${formData.phone}</p>
             <p><strong>Address:</strong> ${formData.address}</p>
-            <p><strong>Ratings:</strong> Technical: ${formData.r1}, Comm: ${formData.r2}, Creative: ${formData.r3}</p>
+            <p><strong>Technical Skill:</strong> ${formData.r1}</p>
+            <p><strong>Communication:</strong> ${formData.r2}</p>
+            <p><strong>Creativity:</strong> ${formData.r3}</p>
             <hr>
-            <h4 style="color: ${color}; font-weight: bold;">${formData.name} ${formData.surname}: ${avg}</h4>
+            <h4 style="color: ${color}; font-weight: bold;">
+                ${formData.name} ${formData.surname}: ${average}
+            </h4>
         </div>
     `;
 
-    alert("Form submitted successfully!"); // Basic success popup
+    alert("Form submitted successfully!"); // Success confirmation
 });
 
 const form = document.getElementById('contact-form');
@@ -112,4 +104,5 @@ document.getElementById('phone').addEventListener('input', function(e) {
     e.target.value = formatted.substring(0, 14); // Limit to correct length
     checkFormValidity();
 });
+
 
