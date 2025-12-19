@@ -282,3 +282,402 @@ button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
+
+ /*Necati Emre Yildirim - Erasmus
+ 
+ /* Typography System */
+h1 { font-size: 4rem; font-weight: 900; letter-spacing: -2px; line-height: 1.1; }
+h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #0563af; }
+h3 { font-size: 1.75rem; font-weight: 300; line-height: 1.4; font-style: italic; }
+p { font-size: 1.1rem; line-height: 1.8; letter-spacing: 0.5px; color: #444; }
+
+/* Spacing Scale & Surfaces */
+.section {
+  padding: 80px 0; /* Consistent padding scale */
+  margin-bottom: 20px;
+}
+
+.about .content, .resume-item, .service-item {
+  border: 1px solid #e0e0e0;
+  border-radius: 15px; /* Restyled radius */
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Added shadow for hierarchy */
+  background: #fff;
+}
+
+/* Interactive Elements */
+a { color: #0563af; transition: all 0.3s ease; }
+a:hover { color: #ce1212; text-decoration: underline; } /* Hover state */
+a:active { transform: scale(0.95); } /* Active state */
+
+/* Two Components Restyled: Navbar & Progress Bars */
+#header {
+  background: rgba(5, 99, 175, 0.9); /* Dark blue navbar */
+}
+.navmenu a, .navmenu a i { color: #fff !important; }
+.navmenu a:hover, .navmenu .active { background: #ce1212; border-radius: 50px; }
+
+.progress {
+  height: 12px;
+  background-color: #e9ecef;
+  border-radius: 20px;
+  overflow: visible;
+}
+.progress-bar {
+  background-color: #0563af;
+  border-radius: 20px;
+}
+
+/* Styled Lists */
+/* Unordered List in About */
+.about ul { list-style: none; padding: 0; }
+.about ul li::before {
+  content: "→"; /* Pseudo-element icon */
+  color: #0563af;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Ordered List with Counters */
+.resume-list {
+  counter-reset: resume-counter;
+  list-style: none;
+  padding-left: 0;
+}
+
+.resume-list > li {
+  counter-increment: resume-counter;
+  position: relative;
+  padding-left: 40px; /* Space for the counter number */
+  margin-bottom: 20px;
+}
+
+/* Creating the custom number using pseudo-elements */
+.resume-list > li::before {
+  content: counter(resume-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: #0563af;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+/* Styling the nested list inside the high school item */
+.resume-list ul {
+  list-style: square;
+  padding-top: 10px;
+  color: #666;
+}
+
+/* Tables/Data Blocks */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Distinct Header Row */
+.data-table thead tr {
+  background-color: #0563af;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.data-table th, 
+.data-table td {
+  padding: 15px 20px;
+  border: 1px solid #eeeeee;
+}
+
+/* Zebra Striping */
+.data-table tbody tr:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+
+/* Row Hover Effect */
+.data-table tbody tr:hover {
+  background-color: #f1f7fc;
+  transition: 0.3s;
+}
+
+/* Alignment Requirements */
+.data-table td {
+  text-align: left; /* Text left-aligned */
+}
+
+.text-right {
+  text-align: right !important; /* Numbers right-aligned */
+}
+
+/* --- CSS-Only Loader --- */
+#custom-loader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #fff;
+  display: flex; justify-content: center; align-items: center;
+  z-index: 9999;
+  animation: fadeOutLoader 0.5s forwards;
+  animation-delay: 1.5s; /* Shows loader briefly then hides */
+}
+
+.spinner {
+  width: 50px; height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #0563af;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* --- Keyframes Animations --- */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOutLoader {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes buttonGlow {
+  0% { box-shadow: 0 0 5px rgba(5, 99, 175, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(5, 99, 175, 0.6); }
+  100% { box-shadow: 0 0 5px rgba(5, 99, 175, 0.2); }
+}
+
+/* Applying Animations */
+#hero h2 {
+  animation: sectionFadeIn 1.5s ease-out;
+}
+
+.php-email-form button[type="submit"]:hover {
+  animation: buttonGlow 1.5s infinite;
+}
+
+/* --- Accessibility (Reduced Motion) --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
+
+/* --- Optional Task: Animated Gradient Background --- */
+#hero {
+  background: linear-gradient(-45deg, #0563af, #1e3a8a, #3b82f6, #60a5fa);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white; /* Ensures text is readable on the dark gradient */
+  position: relative; /* Ensure shapes stay inside the hero section */
+  overflow: hidden;   /* Keep shapes from causing scrollbars */
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Optional Task: Decorative Floating CSS Shapes --- */
+/* Ensure the background image stays at the bottom */
+#hero img {
+  position: absolute;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4); /* Increased opacity for better visibility */
+  border-radius: 50%; /* Default circle shape */
+  z-index: 2; /* Sits above the image but below the text */
+  pointer-events: none; /* Allows user to click "through" the shape to links */
+}
+
+.shape-1 {
+  width: 180px;
+  height: 180px;
+  top: 15%;
+  left: 10%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-2 {
+  width: 120px;
+  height: 120px;
+  bottom: 20%;
+  right: 15%;
+  background: rgba(5, 99, 175, 0.3); /* Light blue tint to contrast with the image */
+  animation: float 8s ease-in-out infinite;
+  transform: rotate(45deg);
+  border-radius: 10%; /* Makes this one a rounded square/diamond */
+}
+
+/* Main content must be on the highest layer */
+#hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+/* --- Floating Animation Keyframes --- */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(15deg); }
+}
+
+/* Styling for disabled state  */
+button:disabled {
+    background-color: #cccccc !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Error feedback border [cite: 47] */
+.form-control {
+    transition: border 0.3s ease;
+}
+
+#form-results {
+    clear: both;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: inline-block; /* Helps prevent collapsing */
+}
+
+/* Ensure the submit button clearly shows disabled state */
+#submit-btn:disabled {
+    background-color: #d3d3d3 !important;
+    border-color: #d3d3d3 !important;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.game-board {
+    display: grid;
+    gap: 10px;
+    margin: 20px auto;
+    perspective: 1000px;
+    max-width: fit-content;
+}
+
+/* Dynamic grid classes */
+.grid-easy { grid-template-columns: repeat(4, 100px); }
+.grid-hard { grid-template-columns: repeat(6, 100px); }
+
+.card {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 8px;
+    border: 2px solid #333;
+}
+
+.card-front {
+    background-color: #2c3e50; /* Card Back Color */
+}
+
+.card-back {
+    background-color: #ecf0f1; /* Card Face Color */
+    transform: rotateY(180deg);
+}
+
+.hidden { display: none; }
+.matched { opacity: 0.7; cursor: default; }
+
+/* Ensure the game section aligns with your other CV sections */
+#memory-game-section {
+    padding: 60px 20px;
+    margin-left: 250px; /* Match this to your sidebar width */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+/* Optional: Make it responsive for mobile */
+@media (max-width: 768px) {
+    #memory-game-section {
+        margin-left: 0;
+        padding-top: 80px;
+    }
+}
+
+.game-controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.game-controls select, .game-controls button {
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#start-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+}
+
+#restart-btn {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+}
+
+.stats-panel {
+    display: flex;
+    gap: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+#win-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 5px;
+    font-weight: bold;
+}
