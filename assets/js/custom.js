@@ -36,16 +36,20 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     // Display Results
     const resultsDiv = document.getElementById('form-results');
     resultsDiv.style.display = 'block';
+    resultsDiv.style.zIndex = "999"; // Ensure it stays on top of layers
+    resultsDiv.style.position = "relative"; // Fixes potential "under-layer" issues
+
     resultsDiv.innerHTML = `
-        <hr>
-        <p><strong>Name:</strong> ${formData.name}</p>
-        <p><strong>Surname:</strong> ${formData.surname}</p>
-        <p><strong>Email:</strong> ${formData.email}</p>
-        <p><strong>Phone number:</strong> ${formData.phone}</p>
-        <p><strong>Address:</strong> ${formData.address}</p>
-        <p style="font-weight: bold; color: ${color};">
-            ${formData.name} ${formData.surname}: ${average}
-        </p>
+        <div style="padding: 20px; background: #fff; border: 1px solid #ddddddff; border-radius: 8px;">
+            <p><strong>Name:</strong> ${formData.name}</p>
+            <p><strong>Surname:</strong> ${formData.surname}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Phone:</strong> ${formData.phone}</p>
+            <p><strong>Address:</strong> ${formData.address}</p>
+            <p><strong>Ratings:</strong> Technical: ${formData.r1}, Comm: ${formData.r2}, Creative: ${formData.r3}</p>
+            <hr>
+            <h4 style="color: ${color}; font-weight: bold;">${formData.name} ${formData.surname}: ${avg}</h4>
+        </div>
     `;
 
     alert("Form submitted successfully!"); // Basic success popup
@@ -106,5 +110,3 @@ document.getElementById('phone').addEventListener('input', function(e) {
     e.target.value = formatted.substring(0, 14); // Limit to correct length
     checkFormValidity();
 });
-
-
