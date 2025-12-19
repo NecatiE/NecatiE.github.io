@@ -371,43 +371,51 @@
 
           </div>
 
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+<div class="col-lg-8">
+ <form action="" method="post" id="contact-form" class="php-email-form">
+  <div class="row gy-4">
+    <div class="col-md-6">
+      <input type="text" name="name" id="name" class="form-control" placeholder="Name" required>
+      <small class="error-msg" id="name-error"></small>
+    </div>
+    <div class="col-md-6">
+      <input type="text" name="surname" id="surname" class="form-control" placeholder="Surname" required>
+      <small class="error-msg" id="surname-error"></small>
+    </div>
+    <div class="col-md-6">
+      <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+      <small class="error-msg" id="email-error"></small>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" name="phone" id="phone" placeholder="+370 6xx xxxxx" required>
+      <small class="error-msg" id="phone-error"></small>
+    </div>
+    <div class="col-md-12">
+      <input type="text" class="form-control" name="address" id="address" placeholder="Address" required>
+      <small class="error-msg" id="address-error"></small>
+    </div>
 
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
+    <div class="col-md-4">
+      <label>Technical Skill (1-10)</label>
+      <input type="range" name="rate1" id="rate1" min="1" max="10" class="form-range">
+    </div>
+    <div class="col-md-4">
+      <label>Communication (1-10)</label>
+      <input type="range" name="rate2" id="rate2" min="1" max="10" class="form-range">
+    </div>
+    <div class="col-md-4">
+      <label>Creativity (1-10)</label>
+      <input type="range" name="rate3" id="rate3" min="1" max="10" class="form-range">
+    </div>
 
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
+    <div class="col-md-12 text-center">
+      <button type="submit" id="submit-btn">Send Message</button>
+    </div>
+  </div>
+ </form>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
+<div id="form-results" class="mt-4" style="display:none;"></div><!-- End Contact Form -->
+<!-- /Contact Section -->
 
   </main>
 
@@ -462,6 +470,7 @@
 </body>
 
 </html>
+
 
 
 
