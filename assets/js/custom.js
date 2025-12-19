@@ -61,6 +61,7 @@ const submitBtn = document.getElementById('submit-btn');
 // Validation Rules (Regex)
 const regexLetters = /^[A-Za-z]+$/;
 const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const addressRegex = /^[A-Za-z0-9\s.,/]+$/;
 
 function validateField(input, condition) {
     if (condition) {
@@ -77,7 +78,8 @@ function checkFormValidity() {
     const isNameValid = validateField(document.getElementById('name'), /^[A-Za-z]+$/.test(document.getElementById('name').value));
     const isSurnameValid = validateField(document.getElementById('surname'), /^[A-Za-z]+$/.test(document.getElementById('surname').value));
     const isEmailValid = validateField(document.getElementById('email'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('email').value));
-    const isAddressValid = validateField(document.getElementById('address'), document.getElementById('address').value.trim().length > 5);
+    const isAddressValid = validateField(document.getElementById('address'),addressInput.value.trim().length > 5 && addressRegex.test(addressInput.value));
+
 
     // STRICT PHONE VALIDATION
     const phoneInput = document.getElementById('phone');
@@ -110,3 +112,4 @@ document.getElementById('phone').addEventListener('input', function(e) {
     e.target.value = formatted.substring(0, 14); // Limit to correct length
     checkFormValidity();
 });
+
