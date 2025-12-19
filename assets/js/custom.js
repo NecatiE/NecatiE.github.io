@@ -75,7 +75,7 @@ function checkFormValidity() {
     const isAddressValid = validateField(document.getElementById('address'), document.getElementById('address').value.trim().length > 5);
     
     const phoneInput = document.getElementById('phone');
-    const isPhoneValid = validateField(phoneInput, phoneInput.value.length >= 15);
+    const isPhoneValid = validateField(phoneInput, phoneInput.value.length = 14);
 
     // The Submit button must remain disabled until ALL fields are valid
     submitBtn.disabled = !(isNameValid && isSurnameValid && isEmailValid && isAddressValid && isPhoneValid);
@@ -99,4 +99,5 @@ document.getElementById('phone').addEventListener('input', function(e) {
 ['name', 'surname', 'email', 'address'].forEach(id => {
     document.getElementById(id).addEventListener('input', checkFormValidity);
 });
+
 
