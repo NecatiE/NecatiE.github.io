@@ -407,27 +407,28 @@
         <div id="form-results" class="mt-4" style="display:none;"></div>
       </div></div></div></section><!-- /Contact Section -->
 
-      <section id="memory-game-section">
-    <h2>Memory Game</h2>
-    
-    <div class="game-controls">
-        <label for="difficulty">Difficulty:</label>
-        <select id="difficulty">
+      <section id="MemoryGame" class="section">
+        <div class="container">
+            <h2>Memory Game</h2>
+        
+        <div class="game-controls">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty">
             <option value="easy">Easy (4x3)</option>
             <option value="hard">Hard (6x4)</option>
-        </select>
-        <button id="start-btn">Start Game</button>
-        <button id="restart-btn">Restart</button>
-    </div>
+            </select>
+            <button id="start-btn">Start Game</button>
+            <button id="restart-btn">Restart</button>
+        </div>
 
-    <div class="stats-panel">
-        <p>Moves: <span id="moves">0</span></p>
-        <p>Matches: <span id="matches">0</span></p>
-    </div>
+        <div class="stats-panel">
+            <p>Moves: <span id="moves">0</span></p>
+            <p>Matches: <span id="matches">0</span></p>
+        </div>
 
-    <div id="game-board" class="game-board"></div>
-    <div id="win-message" class="hidden">🎉 Congratulations! You matched them all!</div>
-</section>
+        <div id="game-board" class="game-board"></div>
+        <div id="win-message" class="hidden"> Congratulations! You matched them all!</div>
+    </section>
 
   </main>
 
